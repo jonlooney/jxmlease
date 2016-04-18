@@ -195,14 +195,15 @@ def emit_xml(obj, *args, **kwargs):
     <XMLNodeBase.emit_xml>` method of that class. Please see the
     documentation for the class' :py:meth:`emit_xml <XMLNodeBase.emit_xml>`
     method for information on arguments and return values.
+
+    Raises:
+        :py:exc:`TypeError`: If the object is not an appropriate type
+            to convert to an XML tree.
     """
-    try:
-        if isinstance(obj, (XMLDictNode, dict)):
-            parsed_obj = XMLDictNode(obj)
-        elif isinstance(obj, (XMLListNode, list, tuple)):
-            parsed_obj = XMLListNode(obj)
-        else:
-            raise TypeError
-    except Exception:
-        raise TypeError("object does not appear to be suitable for conversion to XML output")
+    if isinstance(obj, (XMLDictNode, dict)):
+        parsed_obj = XMLDictNode(obj)
+    elif isinstance(obj, (XMLListNode, list, tuple)):
+        parsed_obj = XMLListNode(obj)
+    else:
+        raise TypeError
     return parsed_obj.emit_xml(*args, **kwargs)
