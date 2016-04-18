@@ -96,7 +96,7 @@ Args:
         the node.
     tag (string): The XML tag for this node.
     key (string or tuple): The dictionary key used for this node.
-    xml_attrs (dictionary): The XML attributes for the node.
+    xml_attrs (`dict`): The XML attributes for the node.
     text (string): The node's initial CDATA value. (Note
         that this is ignored for :py:class:`XMLCDATANode` objects.)
     parent (Instance of a sub-class of :py:class:`XMLNodeBase`): A
@@ -816,9 +816,9 @@ class XMLNodeBase(object):
            completely reliable.
 
         Args:
-            attrs (a list): The list of XML attributes that signal a node
+            attrs (`list`): The list of XML attributes that signal a node
                 should be used as a key.
-            tags (a list): The list of XML tags that signal a node should be
+            tags (`list`): The list of XML tags that signal a node should be
                 used as a key.
             func (function): A function that will accept a node as a parameter
                 and return a key.
